@@ -1,0 +1,208 @@
+Inheritance - Relationship between two or more classes
+=======================================================
+
+To inherit means to reuse the "form" of existing class. And of course there must be "is" kind of relationship between two classes. That means there must be a one and only one class whose form can be re-used directly.
+
+In other words, we can create another class or new class from the existing class via "Inheritance" relationship.
+
+In this senario, the existing class whose "form" is reused is known as "Super or Base class" whereas the classes which are created from the "Super class" are called "Derived or Sub classes".
+
+General Syntax:
+
+access class SubClassName : SuperClassName, [Interface1, Interface2,.... ] 
+{
+ //Code
+}
+
+Unified programming model and single direct super class
+-------------------------------------------------------
+DotNet Framework's CTS uses unified programming model and which ensure that every TYPE must have one and only one direct super class.
+
+ For instance,
+
+   If you don't use the inheritance syntax then the C# compiler uses "System.Object" as the super class
+   of your class.
+
+  public class Emp {}  is same as public class Emp : System.Object {  }
+
+
+And also, inheritance is transitive. Consider the following example:
+
+ public class A { }    		// Direct super class of A is "System.Object"
+ public class B : A { }         // Direct super class of B is "A"
+ 				// And because A's is subclass of "Object" then B has another
+				// indirect superclass called "System.Object"
+
+Objects and sub-objects in inheritance relationship
+====================================================
+Example:
+using System;
+public class A
+{
+  public int no;
+}
+public class B : A
+{
+  public int no;
+}
+
+code in Main method:
+
+ /* 
+   When we create an object of "B" class then the CLR will create te object of System.Object first and
+   then an object of "A" and then finally an object of "B".
+
+   So, the parameterless constructors are executed in similar order : System.Object's, A's and then B's
+  */
+  
+  B x = new B();  
+  A y = x;
+  Object z = x;  // Object z = y;
+
+  x.no = 10;
+  y.no = 20;
+
+  Console.WriteLine(x.no + "  " + y.no);
+
+
+Each sub-class object has references of its super-classes and we can select appropriate object of them using this syntax:   superClassVar = subClassVar; And this syntax is called "Implicit or automatic object cast".
+
+But, to access the sub class objects via super class reference, we must have to cast explicitly or forcefully using ( ) cast operator or "as" operator.
+
+code in Main:
+
+   Object z = new B();   // Select object reference of "System.Object" class
+   A y = (A) z;  // or A y = z as A;
+   B x = z as B;
+
+   x.no = 10;
+   y.no = 20;
+
+   Console.WriteLine( x.no + " " + y.no );
+
+OR (Alternative code):
+
+        Object z = new B();
+
+        (z as A).no = 10;
+        (z as B).no = 90;
+
+        Console.WriteLine((z as A).no + "   " + (z as B).no);
+
+
+Example: Constructor execution order in super & sub-classes
+
+using System;
+
+public class A
+{
+  public A()
+    {
+       Console.WriteLine("A::Parameterless");
+     }
+ public A(int n)
+    {
+       Console.WriteLine("A::Int");
+     }
+}
+
+public class B: A
+{
+  public B()
+    {
+       Console.WriteLine("B::Parameterless");
+     }
+ public B(int n)
+    {
+       Console.WriteLine("B::Int");
+     }
+ public B(string  n)
+    {
+       Console.WriteLine("B::String");
+     }
+}
+
+class Test
+{
+  static void Main()
+   {
+     B x = new B();
+     B y = new B(100);
+     B z = new B("Hello");
+    }
+}
+Output:
+A::Parameterless
+B::Parameterless
+A::Parameterless
+B::Int
+A::Parameterless
+B::String
+
+By default, super's "parameterless" constructor will be invoked everytime but is you want to choose other constructor of super class then use "base" keyword with sub-class constructors.
+
+....
+....
+public class B : A
+{
+    public B() : base(10)
+    {
+        Console.WriteLine("B::Parameterless");
+    }
+    public B(int n) : base(n)
+    {
+        Console.WriteLine("B::Int");
+    }
+    public B(string n)  
+    {
+        Console.WriteLine("B::String");
+    }
+}
+....
+....
+
+Example:
+using System;
+public class Person
+{
+  public int Age { get;set; }
+  public string Name {get;set;}
+  public Person(int age, string name) 
+   {
+      Age = age;
+      Name = name;
+   }
+}
+public class Student : Person
+{
+   public string Standard { get;set;}
+   public Student(string name, int age, string standard) : base (age,name) 
+    {
+         Standard = stadnard;
+     }
+}
+public class Doctor : Person
+{
+   public string Speciality { get; set; }
+   public Doctor(string name, int age, string speciality) 
+           : base(age, name)
+     {
+         Speciality = speciality;
+      }
+}
+code in Main:
+
+ Doctor d = new Doctor("Rajesh",30,"Ortho");
+ Student s = new Student("Man",7, "2nd");
+
+Method overriden  
+==================
+
+Method overriden means to supersede the super's virtual methods in sub-class. That means, by this technique, we can replace the some of the unwanted super class methods.
+
+But, it is important to note that the one can override the "virtual" or "abstract" methods only. That means not all methods or property of super class are overriden.
+
+
+
+
+

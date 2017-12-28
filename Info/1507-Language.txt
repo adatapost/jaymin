@@ -1,0 +1,96 @@
+ C# Language 
+ =============================================================
+
+ C# is ,
+   
+    1. CLS Compliant programming language
+    2. case-sensitive language
+    3. statically strongly-typed language
+    4. supports Object Oriented Paradigm
+    5. C# compiler/language produces MSIL code from the C# code and save into .dll or .exe assemblies.
+    6. has feature of "Dynamic Programming" language 
+
+ 1. CLS Compliant means it is designed as per CLS specification   
+ 2. Statically strongly-typed means each & every data and its type is checked during the compilation. If
+    data and its datatype match then C# compiler compiles the code, produce compiler errors otherwise.
+
+      For example,    int n = 10;
+                      byte b = n; <--- won't compiled
+                      float c = 10.10;  <-- won't compiled 10.10 is consider as "double"
+ 3. Object Oriented Paradigm is a way to design the code in such manner so every one 
+    can benefit from the code. 
+         It means the developers can re-use the code in one or more ways. 
+         The customers can be benefited by the quality and cost of the product.
+         The users of the system/product can easily understood the behavior of the product.
+
+     The most important benefictor of the system is "Developer/Programmer" and the OOP offers number of
+     technique to design the source code.
+
+               These techniques are :
+                         1. Encapsulation and abstraction
+                         2. Inheritance, Generics (or meta programming) and
+                         3. Polymorphism
+
+      Different different programming languages support the technical aspect to design the code via
+      above mentioned techniques.
+
+      To achieve encapsulation and abstraction in programming code, we must have to use "TYPES" system and
+      access control keywords (public, private, protected etc).
+
+      Abstraction? An abstraction draws an outline between the user of the code and the creator of the code. It
+                   separates the code definition from its declartion and also its users from the creators.
+
+      Encapsulation is a result of "abstraction". That means we can achieve encapsulation (protect the code, data from
+      users) via abstraction.
+
+  4. Dynamic Programming 
+ 
+     The term dynamic is related to the TYPES system. In Dynamic types system, data type is associated with the
+     value and not with the variable.
+          e.g
+
+               (C# code):
+
+                     dynamic n;
+                     n = 10;      // 10 is int
+                     n = "Hello"  // "Hello" is string
+                     n = 10.10    // 10.10 is double
+
+
+
+ 
+     The Visual Studio - An IDE - Integrated Development Environment
+     ================================================================
+
+     We will use Visual Studio IDE to author the .net applications. The VS integrats us with "Compilers", "CTS", 
+     "CLR", and many other tools including debugging, testing tools.
+
+     The VS uses "project template" system for different purpose of applications. The project template describes
+     the nature of software/application, number of libraries and technologies used by the application, how to
+     compile the one or more source code, how to integrat other resource files and so on.
+
+      Project template
+      -----------------
+      This is the entry point to use the VS.
+
+      This template helps the developer to :
+
+           1. Choose appropriate version of .NET Framework
+           2. Choose the programming language to author the code
+           3. Select the necessary CTS TYPES (libraries)
+           4. Select the way to "build" the application. The "Build" is a name of some activities to 
+              compile all source code file and generate a single "assembly".
+           5. It define the software "deployment" strategy (software installer)
+           6. It allow us to use "components" from one application to another application (i.e one project to
+              another project).
+            
+       In fact, project template is nothing but a project configuration file that is saved as .csproj for C# language
+       and .vbproj for VB language.
+
+       So, when you create a project named "HelloApp". The VS's project template creates a "HelloApp" folder and
+       inside this folder you will find "HelloApp.csproj" file. This ".csproj" is itself a project template.
+
+
+         
+ 
+

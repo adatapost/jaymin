@@ -1,0 +1,147 @@
+How to design a class? What are the minimum ingrediants of the class?
+---------------------------------------------------------------------
+
+ 1. A class must be "public" (so we can access it anywhere)
+ 2. Class name must be "ProperCase"
+ 3. Fields must be private.
+ 4. Method should be public.
+ 5. To initialize the fields, use the constructors.
+ 6. Public names must be in "ProperCase"
+ 7. Override "ToString(), GetHashCode(), and  Equals()"
+
+Example - 1 In this example we'll use public fields
+
+using System;
+
+public class Student
+{
+   public int roll;
+   public string name;
+}
+
+public class Test
+{
+  static void Main()
+   {
+      //Create an object
+      Student s = new Student();
+
+      s.roll = -10;
+      s.name = "asfasfasdkfdasfks fdsfdasfkdsf asfdsfdasfasfdasfsd";
+
+      //As we can see  there are some issue with student data 
+      // - negative roll and long name
+      Console.WriteLine( s.roll + "  " + s.name);
+     }
+}
+Example: Private "fields" and public "Getters/Setters" indirect store(update) or retrieve data  into/from the object respectively.
+using System;
+public class Student
+{
+    private int roll;
+    string name;         //default is private
+    //Encapsulation - Setters
+    public void SetRoll(int v)
+    {
+        if(v>=1 && v<=100)  //Business Logic
+        {
+            roll = v;
+        }
+    }
+    public void SetName(string v)
+    {
+        if(v!=null && (v.Length>=1 && v.Length<=50)) // Business  Logic
+        {
+            name = v;
+        }
+    }
+    //Getters
+    public int GetRoll() {return roll;}
+    public string GetName(){return name;}
+}
+
+public class Test
+{
+    static void Main()
+    {
+        //Create an object
+        Student s = new Student();
+
+        //Call the methods
+        s.SetRoll(-10);
+        s.SetName(null); // or store long name 
+        Console.WriteLine(s.GetRoll() + " " + s.GetName());
+        s.SetName("Rajesh");
+        s.SetRoll(11);
+        Console.WriteLine(s.GetRoll() + "    " + s.GetName());
+    }
+}
+
+
+The default value of the fields
+===============================
+
+All simple type fields will be initialized with zero based value. 
+   For instance, byte, sbyte, short, ushort, long, ulong, int and unit is with 0 value.
+                 float with 0.0f
+                 double with 0.0d
+                 decimal with 0.0m
+                 bool with false
+
+And all reference type fields will be initialized with null.
+                                                       =====
+
+
+Example:
+
+using System;
+
+class Test 
+{
+   public int no;
+   public bool status;
+   public string name;
+}
+
+class MainTest
+{
+  static void Main()
+   {
+     Test a = new Test();
+     Console.WriteLine(s.no);  // 0
+     Console.WriteLine(s.status); // false
+     Console.WriteLine(s.name == null); // true
+     }
+}
+Note: Console.WriteLine( s.name ) will not display null
+
+Example: Define "Meeting" class
+
+using System;
+
+public class Meeting
+{
+   private int _id;         // Meeting identifier
+   private string _topic;   // Meeting discussion topic
+   private string _agenda;    // Meeting agenda
+   private DateTime _start;   // Start date & time
+   private DateTime _end;     // End date & time
+
+
+  //Getters and setters
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

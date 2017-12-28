@@ -1,0 +1,117 @@
+The Class and Objects
+================================================================
+
+ What do you meant by the term "class"?
+
+   -> It is a datatype
+   -> It is an identity of an object
+   -> It is a blue print of an object. A class describes the data-structure and behaviors(methods)
+   -> A class is a way to create a brand new datatype which includes : fields (data-members),
+      methods( member-functions) and nested classes.
+
+ General Syntax
+ --------------
+
+ access-modifier class ClassName : [SuperClass], [Interface1, Interface2,....] 
+  {
+    //1. Fields (Data members)
+    //2. Methods and
+    //3. Nested / Inner classes
+   }
+
+   -> The "class" keyword in C# defines a class
+   -> All members inside the class will become "private". That means default access of
+      class members is "private".
+
+ Access modifiers
+ -----------------
+
+ These modifiers are used to set the visibility of the TYPES and their members. We can hide/show TYPES and their members using access modifiers.
+
+ We have five access modifiers in .NET:
+
+ 1. public	: The public entities are visible everywhere. There is no restriction on these entities.
+
+ 2. internal	: The internal entities are only visible inside the "project" or "assembly" in which
+			they are created. They cannot be vibisle into another assemblies or projects.
+
+ 3. private	: The private entities are only visible inside the "TYPE" in which they are 		defined/created.
+
+ 4. protected	: The protected entities have same access as private but they are visible in	
+		  sub-classes.
+ 5. protected internal
+	or
+	interal protected	: These entities are visible in sub-classes across the project or 
+					namespaces.
+
+The TOP-LEVEL types; TYPES which are not nested are called TOP-LEVEL, can have either "public"
+or "internal" access and the default is "internal".
+
+NESTED members and TYPES have following declared visibility:
+
+ TypeName		Default		Can Changed
+ class			private		private, protected, internal, public and protected internal
+ interface		public		Can't change - remains public forever
+ struct			private		private, internal and public
+ enum			public		Can't change - remains public forever
+ delegate		----- Delegate have no members -----------
+
+  [NOTE: struct don't support inheritance and hence can't use protected keyword.]
+
+Example:
+
+class Help    <----- "Help" has internal access
+{
+  int no;     <---- default is private
+  private int no1;   <--- oK
+  public void test() { }  <--- OK
+
+  class Hi {} <---- private 
+ 
+  void Sample() { } <---- private
+}
+
+ Class, Object and Reference Variables
+ -------------------------------------
+ Reference Variable - It is the variable that holds memory reference of an object or heap and
+			its size (length) is 4 bytes long for 32bit and 8 bytes for 64bit architecture.
+
+Example:
+
+using System;
+
+class Test 
+{
+  public int no;  //data member or field
+}
+
+class Best
+{
+  static void Main()
+   {
+      Test a;          // "a" is called reference variable
+      a = new Test();  // The "new" keyword allocate memory for all instance fields of class "Test"
+		       // and returns memory reference of the object.
+      Test b = new Test();   // A new object will be created and returns memory reference to
+			     // "b" variable.
+       //Select object and update/read properties
+       a.no = 10;
+       b.no = 20;
+       Console.WriteLine(a.no + " " + b.no);
+     }
+}
+
+Example: What will be the output? (code in Main)
+
+Test a = new Test();
+Test b = a;
+
+a.no = 10;
+b.no = 20;
+
+Console.WriteLine(a.no + "    " + b.no);   // 20 20
+
+NOTE: When we assign one reference variable to other, only memory reference will be assigned or copied; not the referenced object.
+
+
+         

@@ -1,0 +1,81 @@
+Example: Design the components: Each employee(id,name,dept) is associate to one department(id,name)
+
+Example: Rectangle has two Points
+public class Point
+{
+  public int X { get;set;}
+  public int Y { get;set;}
+}
+public class Rectangle
+{
+   public Point Start {get;set;}
+   public Point End {get;set;}
+}
+public class Circle
+{
+  public Point Location {get;set;}
+  public double  Radius { get;set;}
+}
+
+Test-1 
+    Rectangle r = new Rectangle();  
+    r.Start = new Point();
+    r.End = new Point();
+    r.Start.X = 10;
+    r.Start.Y = 20; 
+    r.End.X = 200;
+    r.End.Y = 200;
+    C.W......
+
+Test-2
+   
+
+
+         Circle has a Point and radius
+         Triangle has three diffent Points on a plane
+
+
+using System;
+
+public class Dept
+{
+  public int Id {get;set;}
+  public string Name {get;set;}
+}
+
+public class Employee
+{
+  public int Id {get;set;}
+  public string Name {get;set;}
+  public Dept Dept {get;set;}
+}
+
+public class Test
+{
+  static void Main()
+   {
+    Dept prd = new Dept { Id =10, Name = "Production" };
+    Employee raj = new Employee { Id =1, Name = "Raj kumar", Dept = prd };
+    Employee man  = new Employee { Id = 2, Name = "Manohar", Dept = new Dept { Id =20, Name = "Fin" } };
+    Console.WriteLine( raj.Id + " " +raj.Name + " " + raj.Dept.Id + " " + raj.Dept.Name);
+    Console.WriteLine( man.Id + " " +man.Name + " " + man.Dept.Id + " " + man.Dept.Name);
+
+    Employee s1 = new Employee();
+    s1.Id = 3;
+    s1.Name = "Ratan";
+    s1.Dept = new Dept();
+    s1.Dept.Id = 4;
+    s1.Dept.Name = "Accounting";
+
+    Console.WriteLine(s1.Id + " " + s1.Name + " " + s1.Dept.Id + " " + s1.Dept.Name);
+    
+    Employee s2 = new Employee();
+    s2.Id = 8;
+    s2.Name = "Chandan";
+    s2.Dept = prd;
+    Console.WriteLine(s2.Id + " " + s2.Name + " " +s2.Dept.Id + " " +s2.Name);
+   }
+}
+
+Example: Student(Roll,Name,Branch) & Branch(Id,Name)
+Example: Exam(Date,Name), Subject(Id,Name), ExamSubject( Exam,Subject)

@@ -1,0 +1,132 @@
+Interface Type
+===============
+
+Interface datatype is mainly used for the following purposes:
+
+  1. To separate the definition code from their declaration. That means we can place declaration into
+     interface type and one or more definitions into classes. In other words, we can achive polymorphism
+     using interface + classes relationship.
+
+  2. To define the standard or software protocols. Libraries  and standard protocols are described by
+	the interfaces.
+
+  3. To save method reference into memory (In C/C++, we uses function pointer to store function's
+      memory address)
+
+
+Interface & Class relationship
+-----------------------------
+An interface describes "What to do?" 
+
+ For instance,
+  
+   public interface Language 
+     {
+         void Speak();
+         void Write();
+      }
+
+And "classes" describes "How to do?"
+
+  For instance, Gujarati or Hindi Or English languages have Speak, Write etc methods but these have
+  different capacity.
+
+  public class English : Language   // In this relationship, interface force the class to develop
+  {                                 // Speak() and Write() methods
+     public void Speak()
+       {
+         Console.WriteLine("I can speak English.");
+        }
+      public void Write()
+        {
+        Console.WriteLine("I can write English.");
+         }
+    }
+ public class Gujarati : Language
+  {  
+    public void Speak() { Console.WriteLine("I can speak Gujarati"); }
+    public void Write() { Console.WriteLine("I can write Gujarati"); }
+    public void Bolo() { Console.WriteLine("I can .."); }
+   }
+
+code in Main:
+
+Language lang;        // Interface Reference Variable
+
+|-----------------------------|
+| Method    |  Reference      |
+|-----------------------------|
+| Speak     |                 |
+| Write     |                 |
+|-----------------------------|
+
+lang = new English();  // Store references of methods
+
+|-----------------------------|
+| Method    |  Reference      |
+|-----------------------------|
+| Speak     | English#Speak   |
+| Write     | English#Write   |
+|-----------------------------|
+
+lang.Speak();
+lang.Write();
+
+lang = new Gujarati();  // Store references of methods
+
+|-----------------------------|
+| Method    |  Reference      |
+|-----------------------------|
+| Speak     | Gujarati#Speak  |
+| Write     | Gujarati#Write  |
+|-----------------------------|
+
+lang.Speak();
+lang.Write();
+
+Naming convention of Interface in .net framework.
+------------------------------------------------
+ "I" prefix is used to create interface types.
+
+e.g System.IDisposable, System.ICloneable etc
+
+System.IDisposable interface and using block
+---------------------------------------------
+Sometimes we need to execute some clean-up code or end-up code which will be executed after the object is done -- in anycase, in case of error or not. 
+
+Here, we've using() block syntax which calls the Dispose() of "IDisposable" object whether an exception is encountered or not.
+
+Syntax:
+
+ using(DisposableClass obj = new DisposableClass() { }
+
+Example:
+
+using System;
+
+public class Student  : IDisposable
+{
+    public void Dispose()
+    {
+        Console.WriteLine("I'm leaving...");
+    }
+}
+
+public class Test
+{
+    static void Main()
+    {
+        using (Student s = new Student())
+        {
+            //statements
+        }
+        using (Student s = new Student())
+        {
+            //statements
+        }
+
+    }
+}
+IMPORTANT NOTE: All network, Input/Output, Database (ADO, EDM), XML and many more objects uses huge amount of memory and also they have implemented IDisposable interface. So, we must use the using() block while performing above mentioned tasks.
+
+

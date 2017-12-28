@@ -1,0 +1,320 @@
+Adding properties to the class
+==============================
+
+Properties are special purpose methods which allow us to implement "getter" and "setter" accessor. In previous example, we've added SetRoll(int roll), SetName(String name), GetRoll(), GetName() etc methods in our classes but now we've property syntax to define get and set methods.
+
+*** [Reference from previous example]
+
+using System;
+public class Student
+{
+    private int roll;
+    string name;         //default is private
+    //Encapsulation - Setters
+    public void SetRoll(int v)
+    {
+        if(v>=1 && v<=100)  //Business Logic
+        {
+            roll = v;
+        }
+    }
+    public void SetName(string v)
+    {
+        if(v!=null && (v.Length>=1 && v.Length<=50)) // Business  Logic
+        {
+            name = v;
+        }
+    }
+    //Getters
+    public int GetRoll() {return roll;}
+    public string GetName(){return name;}
+}
+
+public class Test
+{
+    static void Main()
+    {
+        //Create an object
+        Student s = new Student();
+
+        //Call the methods
+        s.SetRoll(-10);
+        s.SetName(null); // or store long name 
+        Console.WriteLine(s.GetRoll() + " " + s.GetName());
+        s.SetName("Rajesh");
+        s.SetRoll(11);
+        Console.WriteLine(s.GetRoll() + "    " + s.GetName());
+    }
+}
+
+
+***
+
+Syntax:
+
+  access-modifier TypeName PropertyName
+   {
+     get
+      {
+         //statements
+          return something;
+       }
+    set
+      {
+        //statements
+      }
+    }
+
+ In this syntax, there are two accessors "get" and "set".
+
+ The order of "get" or "set" has no significant.
+
+ The "get" accessor returns the value of TypeName described at property declaration.
+
+ The "set" accessor uses automatic method parameter named "value" of the  TypeName described at
+ property declaration, to assign the value.
+
+ At least one accessor must be present. If there is "get" accessor only then it is known as "Ready only"
+ whereas if there is "set" accessor only then it is known as "Write only" property.
+
+ The "set" accessor is invoked/called via = (assignment) operator. e.g obj.PropertyName = Value;
+
+Example:
+
+using System;
+
+public class Student
+{
+  private int _roll;
+  private string _name;
+
+  //Properties
+  public int Roll
+   {
+    get
+      {
+        return _roll;
+       }
+    set
+      {
+        _roll = value;
+       }
+    }
+ public string Name
+   {
+      set
+        {
+           _name = value;
+         }
+       get
+        {
+           return _name;
+         }
+    }
+}//EndClass
+
+public class Test
+{
+  static void Main()
+   {
+     Student s = new Student();
+     s.Roll = 10;  // will invoke set accessor
+     s.Name = "Man"; // Will invoke set accessor
+ 
+     Console.WriteLine( s.Roll + " " + s.Name );  // will invoke get accessors
+     }
+}//EndClass
+
+Example: Point class has two private fields namely  _x and _y of type int
+
+using System;
+
+public class Point
+{
+  int _x,_y;
+
+  public int X
+   {
+     get { return _x; }
+     set { _x = value; }
+    }
+  public int Y
+   {
+     get { return _y; }
+     set { _y = value; }
+    }
+}//EndClass 
+public class Test
+{
+  static void Main()
+    {
+      Point p = new Point();
+      p.X = 10;
+      p.Y= 20;
+      Console.WriteLine(p.X + " " + p.Y);
+     }
+}
+
+Object initialization syntax using properties
+============================
+
+With the help of properties, we can initialize the object using following syntax:
+
+  ClassName varName = new ClassName
+   {
+     Property1 = Value1,
+     Property2 = Value2,
+     ....
+    };
+
+Example: Edit Main() code in previous examples
+
+1.   
+      Student s = new Student 
+       {
+         Roll = 10,
+         Name = "Man"
+         };
+        Console.WriteLine(s.Roll + " " + s.Name);
+
+2.    
+      Point p = new Point { X = 10, Y = 20 };
+      Console.WriteLine(p.X + " " + p.Y);
+
+
+Auto-implemented proeprties
+=============================
+ 
+C# automatically create private fields for you and also property if the property is defined using following syntax:
+
+
+ access-modifier TypeName PropertyName { get; set; }
+                                            ^    ^
+                                            |----|------ semi-colon to terminate accessors
+
+Example:
+
+using System;
+
+public class Point
+{
+   public int X {get;set;}
+   public int Y {get;set;}
+}
+code in Main:
+    Point p = new Point { X = 10, Y = 20 };
+    Console.WriteLine( p.X + " " + p.Y);
+
+IMPORTANT - This "auto-implemented" property is the best and quickest way to design the classes.
+
+
+Example: Student class has roll, name and marks of three subjects properties.
+
+using System;
+
+public class Student
+{
+  public int Roll {get;set;}
+  public string Name {get;set;}
+  public int English {get;set;}
+  public int Maths {get;set;}
+  public int Science {get;set;}
+
+  //Extra methods/properties
+
+  public int Total
+   {
+     get { return Maths + English + Science; } 
+   }
+  public double Percent
+   {
+     get { return Total/3.0; }
+    }
+  public string Grade
+   {
+     get
+       {
+           double p = Percent;
+           if(p>=70) return "A";
+           if(p>=60) return "B";
+           if(p>=50) return "C";
+           return "D";
+         }
+    }
+  public void Print()
+   {
+      Console.WriteLine("Roll.........: " + Roll);
+      Console.WriteLine("Name.........: " + Name);
+      Console.WriteLine("English......: " + English);
+      Console.WriteLine("Maths........: " + Maths);
+      Console.WriteLine("Science......: " + Science);
+      Console.WriteLine("Total........: " + Total);
+      Console.WriteLine("Percent......: " + Percent);
+      Console.WriteLine("Grade........: " + Grade);
+     }
+}//EndClass
+
+public class Test
+{
+  static void Main()
+   {
+     Student p = new Student();
+     p.Roll = 1;
+     p.Name = "Ram";
+     p.English = 90;
+     p.Maths = 44;
+     p.Science = 77;
+     p.Print();
+    }
+}
+
+
+Object composition -- A way to reuse the classes
+=================================================
+There are two fundamental ways to reuse the classes:
+  1. Composition -- To create objects of classes into other classes 
+  2. Inheritance -- To create new class from existing class for improvement or amendment or enhancement.
+
+Composition - As we've seen number classes for example, the Student is componsed of Roll, Name and many more objects.
+
+using System;
+
+public class Address
+{
+  public string City {get;set;}
+  public int Pin {get;set;}
+  
+}
+
+public class Student
+{
+  public int Roll {get;set;}
+  public string Name {get;set;}
+  public Address Local {get;set;}    
+  public Address Postal {get;set;}
+}
+
+public class Test
+{
+  static void Main() 
+   {
+     Student s = new Student();
+     s.Roll = 10;
+     s.Name = "Raj";
+     s.Local = new Address();
+     s.Postal = new Address();
+     s.Local.City = "Mehsana";
+     s.Local.Pin = 384001;
+     s.Postal.City = "Jamnagar";
+     s.Postal.Pin = 350200;
+     Console.WriteLine( s.Roll + " " + s.Name );
+     Console.WriteLine( s.Local.City + " " + s.Local.Pin );
+     Console.WriteLine( s.Postal.City + " " + s.Postal.Pin );
+    }
+}
+
+  
+
+ 
+
+

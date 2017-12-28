@@ -1,0 +1,96 @@
+
+Linked List  : A class that allow us to represent one object's reference into another object and so on.
+===========
+
+using System;
+
+public class Student
+{
+   public int Roll { get; set; }
+   public string Name {get;set;}
+   
+   //Link pointer to represent reference of Student object
+   public Student Link { get; set; }
+}
+
+public class Test
+{
+  static void Main()
+   {
+     Student s1 = new Student { Roll = 10, Name = "Amar" };
+     Student s2 = new Student { Roll = 20, Name = "Smar" };
+     Student s3 = new Student { Roll = 4, Name = "Jamar" };
+
+     //Setting up the "Link" property of objects
+     s1.Link = s2;
+     s2.Link = s3;
+
+     Console.WriteLine( s1.Roll + " " + s1.Name );
+     Console.WriteLine( s1.Link.Roll + " " + s1.Link.Name );
+     Console.WriteLine( s1.Link.Link.Roll + " " + s1.Link.Link.Name );
+
+     Student t = s1;
+     while( t!=null ) 
+     {
+        Console.WriteLine( t.Roll + " " + t.Name );
+        t = t.Link;
+      } 
+   }
+}
+
+
+Example: Enhance the Linked list component
+
+using System;
+
+Student class : as per previous example 
+
+public class StudentList 
+{
+    Student first, last;
+
+    public void Add( Student std )
+     {
+         if(first == null)
+          {
+            first = last = std;
+          }
+         else
+          {
+            last.Link = std;
+            last = std;
+           }
+      }
+
+    public void Print()
+     {
+       Student t = first;
+       while( t!=null)
+        {
+          Console.WriteLine( t.Roll + " " + t.Name );
+          t=t.Link ;
+         }      
+      }
+    public void DeleteFirst()
+     {
+        if(first!=null)
+            first = first.Link;
+        
+      }
+
+}//End Class
+
+public class Test
+{
+  static void Main()
+   {
+      StudentList list = new StudentList();
+
+      list.Add( new Student { Roll = 10, Name = "Raj" } );
+      list.Add( new Student { Roll = 30, Name = "Taj" } );
+       list.Add( new Student { Roll = 5, Name = "Maj" } );
+       list.Print();
+    }
+}
+
+ 

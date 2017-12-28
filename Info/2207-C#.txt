@@ -1,0 +1,194 @@
+Literals
+=========
+
+Literals are symbols or keywords to describe the datatype especially simple types.
+
+1. Interger 
+
+   -> Denoted with 0-9 + and - sign
+   -> You can use decimal, hexadecimal, octal form of the integer literal
+   -> Any integer literal will be automatically cast/converted into byte, sbyte, short,
+	ushort, int, uint if the value is less or equal to the range of the target type.
+
+
+ Example: Determine the range of simple type  
+
+     Console.WriteLine( int.MinValue + " " + int.MaxValue );  
+     Console.WriteLine( sbyte.MinValue + " " + sbyte.MaxValue );
+
+ Example:
+
+     byte b = 100;   //OK because range of byte is 0 to 255
+     short c = 3000; //OK - range of short is -32768 to 32787
+ 
+   But,
+      byte b = 256;  // will show an error
+
+
+ Example: Use the _ (underscore) with numeric value to improve the readability
+
+      int no = 1_00_000;   //You can use _ with any numeric value including float, double, decimal
+
+ Example: Check the overflow of "Integer family" data item. It is important to note that the
+          overflow of float,double and decimal is checked implicity but the overflow of int family
+          is controlled by the "checked" and "unchecked" block.
+
+   code in main:
+
+        int no = 1_00_000;
+        int square = 0;
+       checked
+        {
+            square = no * no;
+        }
+        
+        Console.WriteLine(int.MinValue + " " + int.MaxValue);
+        Console.WriteLine(no);
+        Console.WriteLine(square);
+
+  Remove "checked" block or use "unchecked" in above code will generate incorrect result (square).
+
+2. Long - Use "L" or "l" suffix
+3. Float - Use "F" or "f" suffix
+4. Double - No need to use D or d - default is double value
+5. Decimal - Use "M" or "m" suffix
+
+Example:
+
+        long no = 1_00_000 * 1_00_000L;
+        Console.WriteLine(no);
+
+        float amount = 1000.10f;
+        double amount1 = 100.100;
+        decimal amount2 = 1000.100m;
+
+6. Bool - use false or true
+7. Char - To represent ANSI char - Embed single char in single quote.
+		e.g  'a' 
+                     '5'
+                     '?'
+          To represent Unicode char - Embed \u+four-hexadecimal in single quote
+
+		e.g  '\u0921'   <--- a hindi alphabet
+
+Example:
+
+char ch = 'a';
+char wch = '\u0921';  
+Console.WriteLine( ch );
+Console.WriteLine( wch );  // Console can't display graphics characters
+
+Example: Display the project output into intermediate debug window. This is a part of IDE's debugging tool.
+
+  char wh = '\u0912';
+  System.Diagnostics.Debug.WriteLine( wh );
+
+8. String literal - denoted with double quote and may contains ANSI and unicode
+
+Example:
+
+string name = "My name is Raj and you're \u0921\u0933\u0912";
+System.Diagnostics.Debug.WriteLine(name);
+
+Example: Multiline string operator @ - verbatim operator
+
+Syntax:  @"your.... content
+           ......
+           .......
+          ";
+
+code in main:
+
+ string address=@"
+10, Tulsishyam Nagar,
+Meruth,
+UP - 494042
+";
+
+Console.WriteLine( address );
+
+
+Example: Escape the backslash characters using @ verbatim operator
+
+ var path = "c:\new folder\test";    // \n and \t escape character
+ var path1 = @"c:\new folder\test";
+ Console.WriteLine( path );
+ Console.WriteLine( path1 );
+
+Example:  Escape string manually
+
+        var path3 = "c:\\new folder\\test";
+        Console.WriteLine(path3);
+
+        var info = "The \"red\" sun";
+        Console.WriteLine(info);
+
+        var data = @"
+The ""red"" sun
+and the ""red"" rose
+";
+        Console.WriteLine(data);
+
+ 9. null - The "null" literal is compatible to any reference Type so we can
+           use them with only reference TYPES.
+
+	   We can't use null literals with value types.
+		For example,  int no = null; is an erronious statement
+
+           object v = null;  
+           string str = null;   // The String and Object are classes
+
+           The "null" indicates the "object or heap" is missing. It means object is not exists.
+
+    Example:
+
+        string name = "Raj";
+        string address = null;
+        name = null;       
+
+        Following diagram (Stack Vs Heap memory) explains the use of "null" and also
+        helps us to understand the reference types behavior.
+
+
+        Reference Variable - Any variable of "class", "interface", "delegate" or
+			     "array" is known as "Reference Variable" and which
+			     can store memory address of the "Heap/Object"
+			     or null.
+
+                            - The size of (length) Reference variable is
+				4 bytes.
+
+                             - Reference variable is just like a pointer
+				variable in C/C++.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

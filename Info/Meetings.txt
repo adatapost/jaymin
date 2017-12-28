@@ -1,0 +1,49 @@
+Meeting minutes are the written or recorded documentation that is used to inform attendees and non-attendees about what was discussed and what happened during a meeting. The meeting minutes are generally taken or recorded during the meeting so that participants have a record of what happened during the meeting.
+
+Minutes usually include:
+
+->the names of the participants,
+->the agenda items covered,
+->decisions made by the participants,
+->the follow-up actions committed to by participants,
+->due dates for the completion of commitments , and
+->any other events or discussions worth documenting for future review or history
+
+
+
+Meeting minutes provide an important record of proceedings, whether it’s for a corporate staff meeting, a board meeting at a nonprofit organization, or an informal committee meeting. Being able to quickly take notes keeps meetings on track and provides a clear summary to those who weren’t able to attend. To streamline the process of taking meeting minutes, simply use a template that is formatted to fit your needs.
+
+You may want to consider planning and managing your next meeting with Smartsheet, a powerful online task management and collaboration tool. Define meeting goals, map out the agenda, create detailed schedules with discussion topics and presenters. Once the meeting is done, you can upload notes, presentations, and assign action items to a task list. Use conditional formatting for better visibility and automatic notifications for updates and reminders.
+
+How to Take Productive Meeting Minutes
+
+Whether a meeting’s objective is to make policy decisions that affect a large organization or to simply assign responsibilities to staff members, having concise and organized meeting minutes is important. The minutes serve as a record of motions that were passed and as a reminder of who owns certain tasks. Taking minutes during a meeting might sound overwhelming, but following these guidelines can help the process go smoothly.
+
+
+
+Plan your agenda
+=================
+Create an outline around your agenda items and note how much time will be allocated for each item.
+
+Rules of Order
+===================================
+If you’re following formal meeting procedures, choose a meeting minutes - Rules of Order.
+
+Check attendees as they arrive
+=============================
+Save time during your meeting by recording attendance as each member arrives. Also note which members are not present.
+
+Clarify decisions
+=================
+Before the meeting moves on to a new agenda item, make sure a clear decision has been made and recorded. 
+
+
+Capture the essential information
+=================================
+Don’t try to capture every detail in the minutes, but be sure to include decisions that were made as well as assignments and action items. 
+
+Edit for clarity
+====================
+Soon after a meeting, use your notes to write out the minutes in a more readable form. Use an objective tone and keep the minutes brief while still including all essential information, such as actions and motions. 
+
+Summarize any pertinent comment points, but avoid anything personal or inflammatory. Aim to create a professional document that can serve as a record of your meeting.

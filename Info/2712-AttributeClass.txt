@@ -1,0 +1,42 @@
+The Attribute class
+===================
+
+Attribute class is used to provide extra data to the compiler or CLR. That means we can supply extra data or information of any class or entity to the compiler or platform or runtime without modifying the class details.
+
+The System.Attribute is the base class of all attribute and generally we use "Attribute" suffix to name our own classes.
+
+Purpose: If you want to pass extra (metadata) data or data about datatype then we must have to use Attribute.
+
+Example:
+using System;
+
+public class KvAttribute  : Attribute { }
+public class ImpAttribute : Attribute { public int Level = 1; }
+public class AuthorAttribute : System.Attribute
+{
+    //Fields
+    public string Name;  
+}
+
+[Kv]
+[Author(Name = "Rajesh")]
+public class Student  
+{
+    [Imp]
+    public void Print() { }
+    [Imp(Level = 6)]
+    public void Show() { }
+}
+
+[Author(Name ="Ramesh")]
+public class Test
+{
+    static void Main()
+    {
+    }
+}
+
+Note that the attribute name automatically exclude the "Attribute" suffix.
+
+The Attribute can be attached to "class" or "method" or "property".
+

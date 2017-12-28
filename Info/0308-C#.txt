@@ -1,0 +1,210 @@
+ The "var" keyword
+ ==================
+
+ => Using the "var" keyword we can create local variables only. 
+ => C# compiler assign the datatype of variable based upon the assigned value.
+ => Syntax:
+
+          var varName = value;
+
+ => This way, we can create local variables without typing the name of datatype.
+
+     Example:
+
+              int no = 10;   can be   written as   var no = 10;
+              string name = "Raj"  can be          var name = "Raj";
+
+Example:
+ 
+  for(var i = 1;i<=10;i++) 
+   {
+     Console.WriteLine(i);
+    }
+  
+
+Determine the Range (capacity) of Simple Types (int, char, double, float etc)
+---------------------------------------------------------------------
+
+ Each simple type have MinValue and MaxValue static constants:
+
+ Console.WriteLine( int.MinValue + "   " + int.MaxValue);
+ Console.WriteLine( decimal.MinValue + "   " + decimal.MaxValue);
+
+Example: Store the largest double value into double variable.
+   
+   double p = double.MaxValue;  Or  var p = double.MaxValue;
+
+Convert simple type value into "String"
+ OR
+Format simple type value into "String"
+----------------------------------------------------------
+
+   Use the "ToString()" or "ToString(format)" method of simple types.
+
+      Where, the "format" characters are "N - Number", "C-Currency" and 
+             0 or # for custom format.
+
+Example-1
+
+   int no = 45020;
+   string str = no.ToString();
+   Console.WriteLine( str );
+
+   [Please try to use "Debug into Step - Press F11" and also open the 
+    "Local" window from Debug + Windows]
+
+Example-2
+   
+   double amount = 439922.23234;
+   string str = amount.ToString("N");   // Number format with 2 digit decimal
+   Console.WriteLine(str);
+   Console.WriteLine( amount.ToString("N0"));  
+   Console.WriteLine( amount.ToString("N4"));
+   Console.WriteLine( amount.ToString("C"));  // Currency format with 2 digits decimal
+   Console.WriteLine( amount.ToString("C1")); 
+
+   Console.WriteLine( amount.ToString("0,00,000,000.00")); //Custom zero padding
+   Console.WriteLine( amount.ToString("#,##,###,###.00")); //Custom space padding
+
+Example - 3 Generate A00001,..... series
+
+    for(var i = 1;i<=1000;i++)
+        {
+            Console.WriteLine("A"+i.ToString("00000"));
+        }
+
+Convert or parse the "string" data to simple type
+==================================================
+Each simple type has "Parse()" method which parses the string.
+
+Example-1
+
+   string str = "100";
+   int no = int.Parse( str );
+   Console.WriteLine( no );
+
+Example-2
+
+   var no = double.Parse("40000.223");
+   Console.WriteLine(no);
+
+Example-3 Following code will throws an error because of invalid data
+
+   var str = "10A"; 
+   int no = int.Parse( str );  < --- Error
+
+Parse the string and also convert one simple datatype value to another simple type value
+=================================================================================
+We will use "System.Convert" class methods - ToInt32, ToSingle, ToString, ToDouble .....
+
+Example-1
+
+        string str = "100.32232";
+        float no = Convert.ToSingle(str);
+        // int no1 = Convert.ToInt32(str);  //error
+        int no1 = Convert.ToInt32(no);      //float to int
+        Console.WriteLine(no +  "  " + no1); 
+
+Working with DateTime
+============================================
+
+ We will have to use System.DateTime structure to represent the date and time.
+
+Example-1  Obtain system's current date and time 
+
+ DateTime dt = DateTime.Now;    // Local instance of date time
+ DateTime dt1 = DateTime.UtcNow;    // Universal Time Coordinate 
+				    // instance of date time
+
+ Console.WriteLine( dt ); // automatically call the ToString()
+ Console.WriteLine( dt1 ); // automatically call the ToString()
+
+
+Example-2  String to DateTime parse
+
+  string str = "12/31/2017";  // Format must be MM/dd/yy or MM-dd-YY or dd-MMM-yy 
+  DateTime dt = DateTime.Parse( str );
+  Console.WriteLine( dt );
+
+  var dt1 = DateTime.Parse("10-Jan-2002");  // MMM - month abbr.
+  Console.WriteLine( dt1 );
+
+Example - 3 Read "Parts" of Date and time object
+
+        var now = DateTime.Now;
+
+        int m = now.Month;
+        Console.WriteLine(m);
+        Console.WriteLine(now.Day);
+        Console.WriteLine(now.DayOfYear);
+        Console.WriteLine((int)now.DayOfWeek +  " " + now.DayOfWeek);
+
+Example - Add "50 days" to current date
+
+         var dt = DateTime.Now;
+
+          Console.WriteLine(dt);
+          dt = dt.AddDays(50);
+          Console.WriteLine(dt);
+
+Example - Add 5 years 3 month 10 days 4 hour to current date
+    
+          var dt = DateTime.Now;
+          dt = dt.AddYears(5)
+                 .AddMonths(3)
+                 .AddDays(10)
+                 .AddHours(4);
+          Console.WriteLine(dt);
+
+Example: Subtract days, months, years, hours etc --- use negative value
+		with AddXXXXX() methods
+
+            var dt = DateTime.Parse("15-Aug-2017");
+            dt = dt.AddDays( -10);
+            Console.WriteLine(dt);
+
+Example: TimeSpan structure to represent Date difference
+
+        var now = DateTime.Now;
+        var birthDate = DateTime.Parse("12-5-1971");
+
+        TimeSpan span = now - birthDate;
+
+        Console.WriteLine("Total Days  : " + span.TotalDays);
+        Console.WriteLine("Total Years  : " + (span.TotalDays/365));
+        Console.WriteLine("Total Years  : " + Convert.ToInt32((span.TotalDays / 365)));
+        Console.WriteLine("Total minutes :" + span.TotalMinutes);
+
+Example: Format the date (Convert date to string)
+
+Following format characters should be used in "ToString(format)" method.
+
+ var dt = DateTime.Now;
+ Console.WriteLine( dt.ToString("d") );  // date part
+ Console.WriteLine( dt.ToString("t") );  // short time 
+        Console.WriteLine(dt.ToString("M"));  // Month day
+        Console.WriteLine(dt.ToString("y"));  // Month year
+        Console.WriteLine(dt.ToString("dd ddd  dddd"));  // day number and name
+        Console.WriteLine(dt.ToString("MM MMM MMMM"));  // month number and name
+        Console.WriteLine(dt.ToString("HH:mm:ss   hh:mm:ss tt")); //24 hour and 12 hour  
+        Console.WriteLine(dt.ToString("dd-MM-yyyy")); 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

@@ -1,0 +1,25 @@
+ C# - Language
+1. Properties, Auto-impl
+2. Anonymous object
+3. Composition
+4. Generics
+5. Inheritance, Constructors, Overriding, seal, abstract
+6. Interface, implicit
+7. Delegate, Event, Anonymous, lambda
+8. Enum, struct
+9. Extension method
+10. Partial class
+11. Async methods
+
+ APIs
+
+1. Collection framework
+2. Debug & diagnostics
+3. IO
+4. ADO - MSSQL Server database
+5. Linq
+6. EDM
+7. ASP.NET
+
+
+ Html/Css/JavaScript

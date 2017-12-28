@@ -1,0 +1,180 @@
+ The Common Types System - CTS 
+ -----------------------------
+
+  The CTS falls into two kind/type based upon the memory model:
+
+   1. Value Types and
+   2. Reference Types
+
+  The Value Types
+  ----------------
+
+        TYPES having fixed length or size are called Value Types.
+
+        Example: In CTS, "struct" and "enum" types are value types.
+
+        Value Types can uses STACK as well as HEAP frame memory (RAM) to hold the data.
+
+        if Value Types are used as,
+             1. Local variables,
+             2. Method parameters,
+             3. Method return type and
+             4. Method call 
+           then they uses "STACK MEMORY".
+
+        If Value Types are used with "Reference Types" then they will uses "HEAP MEMORY".
+
+  The Reference Types
+  -------------------
+
+  TYPES having variable length/size are called Reference Types.
+
+  Example:  In CTS, class, interface, delegate and array are example of Reference Types.
+
+  Reference Types always uses "HEAP Frame memory".
+
+  [In C/C++, delegate is just like a function pointer - mechanism to store memory address of functions]
+
+  
+  How to arrange or organize the TYPES? --- The "Namespace"
+  =========================================================
+
+  The CTS types are organized and arranged using the "namespace" technique.
+
+
+  The namespace is a technique to create a group of related TYPES and keep one group of TYPES
+  distinct (away) from other group of TYPES to avoid name mismatch (name mangling) and also
+  to enhance the naming scope of the TYPES and NAMESPACES.
+
+
+   In .NET, we've strict rule about TYPES and NAMESPACES.  You can't create a new TYPE without setting up
+   the namespace name for your TYPE.
+
+   In case, if you're not willing to set the namespace then the C# compiler will set "global" namespace name. 
+   However, it is good practice to create the TYPES in our own namespace name.
+
+   The root namespace "System"
+   ---------------------------
+   The "System" is root or main namespace of All CTS.
+
+       Example:
+
+     System.Int32  <------------- Int32 is struct (Value Type)
+      ^
+      |
+  Root 
+ Namespace
+      |
+      V
+     System.Data.SqlClient.SqlConnection <----- Class
+             ^      ^
+             |      |
+         sub        sub sub 
+         namespace  namespace
+
+    System.Web  <--- This namespace all TYPES for ASP.NET Web app programming
+
+    System.Xml  <---- Contains TYPES for XML parser
+
+    System.Data  <---- For Database operations
+
+   The Unified Programming Model
+   -----------------------------
+   The CTS are designed using "Unified" programming model - Single and universal model for develoment of TYPES system.
+
+   This model states that,
+   
+        "Each and every CTS TYPE or Custom TYPE (User Defined) must inherits the System.Object class". It means
+        all TYPES -- CTS and user defined TYPES are sub-classes of System.Object class except the System.Object
+        has no super class.
+
+  For example, (C# code):
+     class Hello  { } is equivalent to 
+     class Hello : System.Object {}
+
+   The System.Object is root or the ultimate root base class of all TYPES.
+
+   [Note: Inheritance of class means re-use of the "Form" of an existing class]
+
+   Simple Types
+   ------------
+
+    Simple Types are Value Types and these types are available at "System" namespace with following names. 
+    However, the C# compiler uses "aliases" of these types.
+
+    CTS Name		C# alias		Size (in bytes)
+    ----------------------------------------------------------------
+    Integer family types
+
+    System.Byte		byte			1
+    System.SByte	sbyte			1 (singed byte) can store +ve and -ve value
+ 
+    System.Int16	short			2 (signed short)
+    System.UInt16	ushort			2 (unsigned short) unsigned means only positive number
+    
+    System.Int32	int			4
+    System.UInt32	uint			4
+ 
+    System.Int64	long			8
+    System.UInt64	ulong			8
+
+    Floating point family
+
+    System.Single	float			4
+    System.Double	double			8
+    System.Decimal	decimal			14
+
+    Misc types
+
+    System.Char		char			2 - Unicode character
+    System.Bool		bool			Not Available - represent true or false value
+    System.DateTime     System.DateTime (No alias)   8
+
+  
+    Unicode 
+    --------
+    It is a character set to represent English and non-English characters including Gujarati, Hindi, Persian etc
+    We can represent chars of any human language characters.
+
+    In databases, the unicode is also known as "national character set".
+
+	For example,
+
+             char(n)   -- Fixed length ANSI string
+             nchar(n)  -- Fixed length unicode string 
+
+ 
+             varchar(n) - Variable length ANSI string
+             nvarchar(n) - Variable length UNICODE string 
+
+       Unicode is also known as UTF - Uniserval Text Format. There are following ways to represent the unicodes:
+            1. UTF-8 = 8 bits representation
+            2. UTF-16 = 16 bits
+            3. UTF-32 = 32 bits
+
+       In India, we uses UTF-8 charset whereas US & Canada uses "unicode UTF-16" for legal documents.
+
+
+
+      Two most commonly used reference types - "System.String" and "System.Object" classes
+      -------------------------------------------------------------------------------------
+
+       As we already know that "System.Object" is the ultimate super/base class and in C# it has
+      an alias "object" (all small letters).
+
+       Anything we represent in double quotes is an object of "System.String" class and in C#. System.String
+       class also express by the alias - "string" (all lowercase).
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+            

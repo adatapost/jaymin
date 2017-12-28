@@ -1,0 +1,303 @@
+ The .NET Framework
+ ===========================================================================================
+
+ The .NET Framework or platform is a computing (programming) environment to develop, deploy and
+ to execute an application in highly distributed environment of the Internetwork.
+
+ In fact, as we know that the operating system is the primary or main platform. We need to use
+ C/C++ language to code in operating system platform.
+
+ However, C/C++ code is too complex and need special skill (programming) so we will use another
+ platform called ".NET Framework" which will be installed upon the OS (Linux/Unix/Win/Mac).
+ 
+ The Components of .NET Framework
+ --------------------------------
+
+ There are three major components that constitute the .NET Framework. In fact there are number of other
+ components/systems in .NET framework but these three components define the overall behavior of .net
+ framework.
+
+     And these components are:
+
+           1. CLI - Common Language Infrastructure
+           2. CTS - Common Types System
+           3. CLR - Common Language Runtime
+
+   1. CLI
+
+      Common Language Infrastructure is a guideline or set of specifications for the people
+      who wants to use the .net framework or wants to create the .net framework or wants to
+      create programming language, library and many other things.
+
+      This guideline or rule are vary from one subject to another.  For example, the CLS - 
+      Common Language Specification is a guideline for the MSIL (Microsoft Common Language) and
+      C# Language Specification is a guidline to develop the C# language.
+
+      In fact, the CLI rules are ranging from variable declaration to method overriding -- it means
+      A to Z rules are defined into specifications (documents).
+
+      
+      C# Program --> C# Compiler ---> MSIL Program -> Just-in Time Compiler -> Native/OS code
+
+      Basically, MSIL - Microsoft Intermedicate Language is a language for the "compilers - C#, VB, F#, MC++,
+      and many more".
+
+       When you compile your C# program using C# compiler, MSIL code will be generated. 
+       The MSIL code further compiled by the JIT and it produces the native code.
+
+
+        Similarly, VB, F#, MC++ and other compilers also emit the "MSIL code".
+
+  2. CTS - Common Types System
+
+        It is the unified datatype system of the .net framework that all programming languages which
+        conforms the CLS can use it.
+
+        To conforms the CLS means to adhare the CLS guideline. For example, C#, VB.NET, F#, MC++ etc
+        languages are created using CLS specification.
+
+        The "TYPES" means Data types. There are more than 3500 TYPES in CTS.
+
+        The CTS are categoried into two group:
+
+                1. Base or Foundation class library (BCL or FCL) and
+                2. Extended class library
+
+            Base/Foundation class library
+            -----------------------------
+            These TYPEs are very fundamental and essential for any category/kind of application
+            programming and it is really impossible to write a line of code without using the
+            BCL.
+
+            Following are the common APIs  (Application Programming Interface or Library) under the
+            BCL:
+		1. Device Input/Output 
+                2. Network 
+                3. Thread-Concurrency, Process and Runtime
+                4. Reflection API
+                5. Text Encoding/Decoding
+                6. Cipher - Encryption/Decryption
+                7. Integration APIs - Database, Email, FTP and many more....
+
+            Extended Class Library
+            -----------------------
+            These APIs are "application specific" and following are the examples.
+                 1. Entity Framework 
+                 2. WinForm API 
+                 3. Windows Presentation Framework (WPF)
+                 4. Windows Communication Foundation ( WCF)
+                 5. ASP.NET
+                 6. Windows Service
+                 7. WinPhone (Mobile) and many more.....
+                 8. Windows Workflow Foundation (WWF)
+
+
+         Note that the CTS is developed using partially C++ (Visual C++) and C#/MSIL language.
+  
+         Note that the CLS compliant languages don't have datatypes. These languages must uses the CTS.                  
+  
+         A program/code that conforms the CLS and compliant to CLS languages is known as 
+         "CLS Compliant code" OR "Managed code".
+
+         The entire CTS library is an example is "Managed Code".
+
+         If your code contains some non-CLS compliant code then your code will be consider as
+         "unmanaged code".
+
+3. CLR - Common Language Runtime
+
+          It is rich runtime environment of the .net framework that handles the number of runtime
+          tasks and services on the behalf of the developers including compiling, threading, 
+          exception handling, memory management, reflection and many more.
+
+          In fact the CLR don't run the your code but it prepare the code in such manner so the
+          underlying operating system execute/run it.
+
+          Actually, the CLR is not a single service but it is stack or collection of number of services and
+          these services are:
+
+               1. Loading of code
+               2. Code verification
+               3. Checking the Type Safety
+               4. Compiling
+               5. Memory Allocation / Deallocation - Memory Management
+               6. Exception handling, Threading and Object Profiling
+               7. Version Checking
+               8. Interoparability
+               
+          
+         It is important to note that the code your write in C# language is not directly executed by the
+         operating system. First of all, the C# compiler compiles the code and produce the "MSIL" code
+         and save it into the .exe or .dll  (.exe stands for executable and .dll stands for Dynamic
+         link library) file.
+
+
+            C# Program file                            Assembly file
+              hello.cs         --> Compilation --->     hello.exe or
+                                                        hello.dll 
+
+
+           [NOTE: A file that comprises MSIL instructions is called assembly file and it has either 
+                   .exe or .dll extension]
+
+           The assembly code is not run by the operating system because the assembly contains the MSIL
+           instructions that OS don't understand. Here, we need the CLR's Just-In-Time Compiler
+           service which convert/translate assembly instructions into native instructions. (MSIL to
+           Native).
+
+            Assemblies
+              hello.exe                                        Native code/Native Assembly
+           or hello.dll   ---------> Just-In-Time Compiler --->    and the code will be play or 
+								 run by the OS.
+
+
+            .exe assembly -- It is self executable because it contains an entry point method "Main()".
+
+            .dll assembly -- It is a reference assembly and it is used by another .dll or .exe assembly.
+
+			NOTE: Libraries - TYPES libraries are of .DLL assemblies.
+
+
+            Location of (Folder) .net framework in our system
+            --------------------------------------------------
+               x:\windows\Microsoft.NET\framework
+
+               
+
+    CLR Stack Services
+    ------------------
+        NOTE: Service is a long run program. An application starts when OS start and remains executed till os is 
+	      running.
+
+        1. Code loader service --- This service loads MSIL code from the disk or network of .net assemblies (.dll or
+				   .exe) into the RAM. In this stage all TYPES which are used into your
+				   application are "layout".
+
+        2. Code Verifier service -- This service is responsible to examine the structure of loaded code or "layouts".
+				    If loaded code has malfunction code or altered instructions then this service
+				    stops the further execution of code. [ This is the part of security of app]
+        3. Type Safety Service --  This service examine the "TYPE" of each and every data used in your app. This 
+				   service ensure that appropriate datatype must be used to hold appropriate data.
+
+					[Note: The Type Safety also done during the compilation of your source code
+						by the C# compiler and here it will be re-checked to avoid ugly
+						runtime errors.]
+        4. Compilation Service -- In this service the MSIL instructions are transllated into the native (OS 
+				  instructions) via following types of compilers:
+
+				  1. Just-In Time Compiler -- This compiler is highly optimized and it converts those
+					MSIL instructions into native which are currently used in the application.
+                                  2. ngen tool -- Native Generator - ngen.exe tool generate native code of the
+					entire assembly - all MSIL instructions including those which are used and
+					not used in the application.
+                                 [Note: Default is JIT]
+
+        5. Memory Management Service -- This service continuously allocate the memory and also deallocate the
+					previously allocated memory automatically or implicitly.
+
+				The memory manager of this service uses following memory model to allocate memory
+				as well as deallocate (release) memory.
+
+				Memory model or Memory Architecture
+                                ------------------------------------
+
+                                When we "launch/run" a program, the memory manager allocate 1 MB RAM to the
+				application/program for the following purposes:
+
+					1. To create "local" variables (Variables created inside the functions)
+                                        2. To create "parameters/arguments" of methods/functions
+                                        3. To manage the return value and
+                                        4. To call the functions/methods
+
+                                The way this 1 MB memory used is according to the data-structure model "STACK" and 
+				that's why this 1 MB memory is called "STACK FRAME MEMORY" or "STACK MEMORY".
+
+                                
+                                What if we need more memory that 1 MB to store large amount of data or
+				we don't want to store the data into STACK memory?
+
+                                The answer is we've have to request the memory manager of CLR's
+				memory service via "new" keyword to allocate more memory. You may allocate
+				additional memory from 1 byte to 2 GB... 4GB (depends upon your environment).
+				So, there is no such limit on allocation of memory and that's why this kind of
+				allocation is called "HEAP FRAME MEMORY" or "HEAP MEMORY".
+
+				There is another service of memory called "garbage collector" which
+				continiously check the "heap memory" and reclaim the heaps if they are
+				no longer needed or no longer used by the programs. 
+
+				It is important to note that the GC - Garbage Collector wont touch the 
+				STACK memory. It only reclaims the heaps.
+
+				Heap is also known as an "Object".
+
+				An object is nothing but collection of bytes. OR partitioned area of memory.
+
+				An Object Oriented Paradigm means memory oriented approach or design.
+
+ 
+          6. Exception handling, Threading and object profile services -- These bunch of services are 
+				performed backgroundly and exposed its messages in the form of CTS Data
+				types.
+
+				Exception : Unexpected happning in a running code is reported by the CLR's
+					    service.
+
+				Threading-Concurrency -  A way to divide the attention of CPU among two or
+							more methods of the program.
+
+				Object profile - A service that persist the object and object's meta data.
+          7. Version and Co-instance execution service - This service checks the version of CTS (datatypes)
+				and applications assemblies (.dll or .exe) to ensure that the application
+				can be run with appropriate version of datatypes.
+					For example, apps developed using .net framework 3.5 requires .net framework
+					3.5 CTS and CLR to execute it.
+
+				Co-instance means a very same class that has two or more versions (copies).
+				e.g The "String" class has different copies in diff .net framework versions but
+				the class "String" remains common name to us.
+
+				Co-instance execution means same named "TYPE" with different version can be used
+				inside the very same application without affecting the application performance.
+                       
+           NOTE: Before the .net framework, there was a DNA (Distributed InterNetwork Archnitecture) Framework and
+			the apps developed using this DNA framework must be registed via Windows Registry Tools or
+			registry APIs.
+
+			We don't need registration for the .net apps because each .net app is self
+			registered using unique GUID or class id (Global Unique Identifier).
+
+		[NOTE: To open the windows registry database, use "regedit" command but beware of it...you may
+			spoil or distrub the OS.]
+
+          8. COM-Interoparability - COM stands for COMPONET OBJECT MODEL; a component developed using DNA. 
+
+			The CLR can't process the COM components instead it allows developer to use mixed
+			.net framework code --- that is managed code and the DNA code -- that is unmanaged code
+			in a single app.
+
+			The managed code is controlled by the all services mentioned above whereas the
+			unmanaged code is passed to the operating system directly by this COM-InterOp service.
+
+			Example, Your application plays media - audio, video etc -- here in this case you use
+					MediaPlayer or VideoLAN or DirectX library which are written in
+					VC++(COM).
+				  You want to use "Word" or "Excel" programatically in your .net app. MS-OFFICE
+					is created using VC++.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
